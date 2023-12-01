@@ -1,0 +1,27 @@
+.label {
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 1px solid var(--gray);
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.input {
+  display: none;
+}
+
+.labelText {
+  color: var(--graphite-grey);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.input:checked + .labelText {
+  color: var(--primary-green);
+}
+
+.label:has(.input:checked) {
+  background-color: var(--graphite-grey);
+}

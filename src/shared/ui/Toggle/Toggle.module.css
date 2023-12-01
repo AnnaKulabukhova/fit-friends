@@ -1,0 +1,50 @@
+.button {
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.wrapper {
+  position: relative;
+  width: 56px;
+  height: 30px;
+  border-radius: 16px;
+}
+
+.inner {
+  position: absolute;
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.wrapperUnchecked {
+  background-color: #d0d0d0;
+}
+
+.innerUnchecked {
+  left: 2px;
+  background-color: #f4f4f4;
+}
+
+.wrapperUnchecked:hover .innerUnchecked {
+  border: 1px solid #aeaeae;
+}
+
+.button:focus .wrapperUnchecked {
+  box-shadow: 0 0 0 1px var(--graphite-grey), 0 0 0 2px var(--primary-green);
+}
+
+.wrapperChecked {
+  background-color: var(--graphite-grey);
+}
+
+.innerChecked {
+  right: 2px;
+  background-color: var(--primary-green);
+}
+.button:focus .wrapperChecked {
+  box-shadow: 0 0 0 2px var(--primary-green), 0 0 0 1px var(--graphite-grey);
+}

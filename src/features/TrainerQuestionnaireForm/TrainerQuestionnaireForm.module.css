@@ -1,0 +1,56 @@
+.modal {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 924px;
+  z-index: 2;
+}
+
+.block {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  padding-bottom: 32px;
+  border: none;
+  border-bottom: 1px dashed var(--gray);
+}
+
+.block:first-child {
+  margin-bottom: 20px;
+}
+
+.block:nth-last-child(3) {
+  border: none;
+  margin: 0;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+.block:nth-last-child(2) {
+  border: none;
+  margin-bottom: 45px;
+  padding-bottom: 0;
+}
+
+.title {
+  display: block;
+  margin: 0;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--black-2);
+}
+
+.titleInput {
+  align-self: center;
+}
+
+.button {
+  width: 256px;
+  height: 70px;
+  margin: 0 auto;
+}

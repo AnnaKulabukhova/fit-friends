@@ -1,0 +1,59 @@
+.modal {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 924px;
+  z-index: 2;
+}
+
+.block {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  padding-bottom: 32px;
+  border: none;
+  border-bottom: 1px dashed var(--gray);
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--black-2);
+}
+
+.titleButton {
+  margin-bottom: 25px;
+}
+
+.titleInput {
+  align-self: center;
+}
+
+.inner {
+  margin-bottom: 45px;
+}
+
+.inputBlock {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.inputBlock:last-child {
+  margin-bottom: 0px;
+}
+
+.input {
+  width: 31%;
+  margin-left: auto;
+}
+
+.button {
+  width: 256px;
+  height: 70px;
+  margin: 0 auto;
+}

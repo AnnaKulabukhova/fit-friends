@@ -1,0 +1,36 @@
+.innerPhoto {
+  display: flex;
+}
+
+.inputPhoto {
+  display: none;
+}
+
+.image {
+  margin-right: 20px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--black-2);
+}
+
+.photoInfo {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #aeaeae;
+}
+
+.errorText {
+  margin-top: 6px;
+  color: #e4001b;
+  font-size: 14px;
+  line-height: 100%;
+}

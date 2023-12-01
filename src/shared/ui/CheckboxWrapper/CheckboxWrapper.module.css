@@ -1,0 +1,12 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.errorText {
+  margin-top: 6px;
+  color: #e4001b;
+  font-size: 14px;
+  line-height: 100%;
+}

@@ -1,0 +1,49 @@
+.label {
+  display: flex;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.buttonContainer {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--graphite-grey);
+  border-radius: 50%;
+}
+
+.label:hover > .buttonContainer {
+  background-color: #f2f2f2;
+}
+
+.label:focus-within > .buttonContainer {
+  box-shadow: 0 0 0 1px var(--graphite-grey), 0 0 0 1px var(--primary-green);
+}
+
+.input:checked + .buttonContainer {
+  background-color: var(--graphite-grey);
+}
+
+.input:checked + .buttonContainer::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+}
+
+.labelText {
+  align-self: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--graphite-grey);
+}
