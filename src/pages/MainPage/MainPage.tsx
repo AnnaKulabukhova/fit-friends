@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from '../../shared/ui/Link';
-import icon from '../../shared/images/icon.svg';
-import title from '../../shared/images/titleLogoWhite.png';
-import backgroundImg from '../../shared/images/runningWomanBW.png';
+import { Link } from '@shared/ui/Link';
+import icon from '@shared/images/icon.svg';
+import title from '@shared/images/titleLogoWhite.png';
+import backgroundImg from '@shared/images/runningWomanBW.png';
 import styles from './MainPage.module.css';
 
 export const MainPage = () => {
@@ -26,7 +26,9 @@ export const MainPage = () => {
           </div>
           <div className={styles.loginText}>Есть аккаунт? </div>
           <span className={`${styles.loginText} ${styles.loginLink}`}>
-            <Link path="/login">Вход</Link>
+            <Link path="/login" variant="simple">
+              Вход
+            </Link>
           </span>
         </div>
       </main>

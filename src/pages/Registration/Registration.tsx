@@ -1,7 +1,7 @@
 import React from 'react';
-import { RegistrationForm } from '../../features/RegistrationForma';
-import title from '../../shared/images/titleBlack.svg';
-import logo from '../../shared/images/iconLogin.svg';
+import { RegistrationForm } from '@features/RegistrationForm';
+import title from '@shared/images/titleBlack.svg';
+import logo from '@shared/images/iconLogin.svg';
 import styles from './Registration.module.css';
 
 export const Registration = () => {

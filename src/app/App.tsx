@@ -9,10 +9,10 @@ import { UserQuestionnaire } from '../pages/UserQuestionnaire';
 
 const router = createBrowserRouter([
   { path: '/', element: <MainPage /> },
-  { path: 'login', element: <Login /> },
-  { path: 'registration', element: <Registration /> },
-  { path: 'userQuestionnaire', element: <UserQuestionnaire /> },
-  { path: 'trainerQuestionnaire', element: <TrainerQuestionnaire /> },
+  { path: '/login', element: <Login /> },
+  { path: '/registration', element: <Registration /> },
+  { path: '/user-questionnaire', element: <UserQuestionnaire /> },
+  { path: '/trainer-questionnaire', element: <TrainerQuestionnaire /> },
 ]);
 
 export const App = () => {

@@ -3,7 +3,7 @@ import styles from './Modal.module.css';
 import { ModalProps } from './types';
 
 export const Modal = ({ children, title }: ModalProps) => {
-  const isTitle = title ? styles.innerWithTitle : '';
+  const titleStyle = title ? styles.innerWithTitle : '';
   return (
     <div className={styles.wrapper}>
       {title && (
@@ -11,7 +11,7 @@ export const Modal = ({ children, title }: ModalProps) => {
           <h2 className={styles.title}>{title}</h2>
         </div>
       )}
-      <div className={`${styles.inner} ${isTitle}`}>
+      <div className={`${styles.inner} ${titleStyle}`}>
         <div>{children}</div>
       </div>
     </div>

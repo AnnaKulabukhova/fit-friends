@@ -1,11 +1,12 @@
 import * as yup from 'yup';
+import { FieldsLogin } from './fieldsLogin';
 
 export const schema = yup.object().shape({
-  email: yup
+  [FieldsLogin.Email]: yup
     .string()
     .email('Некорректный адрес электронной почты')
     .required('Обязательное поле для заполнения'),
-  password: yup
+  [FieldsLogin.Password]: yup
     .string()
     .min(6, 'Минимальная длина пароля 6 символов')
     .max(12, 'Максимальная длина пароля 12 символов')

@@ -1,29 +1,53 @@
 {
   "compilerOptions": {
-    // В какую версию будет преобразован ts
+    // В какую версию js будет преобразован код ts
     "target": "ES2020",
     // Какой тип модулей будет использован для написания ts
     "module": "ESNext",
     // Показывает код, который не будет использоваться
     "allowUnreachableCode": false,
+    "baseUrl": "src",
+    "paths": {
+      "@shared/*": ["./shared/*"],
+      "@entities/*": ["./entities/*"],
+      "@app/*": ["./app/*"],
+      "@pages/*": ["./pages/*"],
+      "@features/*": ["./features/*"],
+      "@widgets/*": ["./widgets/*"],
+      "@src/*": ["./*"]
+    },
+    // Отвечает, какие дефолтные библиотеки стоит подключать "dom" - работа с документом, "dom.iterable" -??? "esnext" - современный синтаксис
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // Сообщайте об ошибках в случаях провала в операторах переключения. Гарантирует, что любой непустой регистр внутри оператора переключателя включает либо break, return либо throw.
     "noFallthroughCasesInSwitch": true,
+    // Нет неявных возвратов
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    // Нет неиспользуемых локальных переменных
+    "noUnusedLocals": false,
+    // Нет неиспользуемых параметров функции
     "noUnusedParameters": true,
+    // Включает генерацию файлов, кот. позволяют отладчикам отображать исходный исходный код TS при фактической работе с созданными файлами JS.
     "sourceMap": true,
-    // "strict": true,
-    "allowJs": true,
+    // Вкл: alwaysStrict, strictNullChecks, strictBindCallApply, strictFunctionTypes, strictPropertyInitialization, noImplicitAny, noImplicitThis, useUnknownInCatchVariables
+    "strict": true,
+    //
     "allowSyntheticDefaultImports": true,
+    // Управляет созданием конструкций JSX в файлах JavaScript. Это влияет только на вывод файлов JS, которые начались в файлах .tsx.
     "jsx": "react",
-    "moduleResolution": "node",
+    //Для автоимпортирования из index-файлов
+    "moduleResolution": "Node",
+    //  файлы .jsБ .d.ts,.js.map  будут создаваться в указанной папке и не будут перезаписаны.
     "outDir": "./dist",
+    // Создаются .d.ts файлы для каждого файла ts или js внутри проекта и представляют собой файлы, которые описывают внешний API модуля.
     "declaration": true,
     // "emitDeclarationOnly": true,
+    // предупреждает, если написан определенный код, который не может быть правильно интерпретирован в процессе транспиляции одного файла.
     "isolatedModules": true,
+    // sourceMap для .d.ts файлов
     "declarationMap": true
-
-    // "baseUrl": "src",
   },
+  // какие файлы исключаются из процесса компиляции
   "exclude": ["node_modules"],
+  // какие файлы попадают  в процесс компиляции
   "include": ["src/**/*", "custom.d.ts"]
 }

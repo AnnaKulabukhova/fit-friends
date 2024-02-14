@@ -1,0 +1,73 @@
+.listSimpleRadioButton {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemSimpleRadioButton {
+  margin-right: 20px;
+}
+
+.itemSimpleRadioButton:last-child {
+  margin-right: 0px;
+}
+
+.errorText {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: #e4001b;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.listComplexRadioButton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemComplexRadioButton {
+  display: flex;
+  align-items: center;
+  padding: 17px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gray);
+  background: var(--grayscale-0, #fff);
+  cursor: pointer;
+}
+
+.itemComplexRadioButton:hover {
+  border-color: var(--primary-green);
+}
+
+.itemComplexRadioButton:has(input:checked) {
+  border: 1px solid var(--Primary, #c5ec2a);
+}
+
+.itemComplexRadioButton:has(input:focus) {
+  box-shadow: 0 0 0 1px var(--graphite-grey), 0 0 0 2px var(--primary-green);
+}
+
+.imageBox {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  margin-right: 15px;
+  background-color: var(--graphite-grey);
+  border-radius: 50%;
+}
+
+input:checked + .imageBox path {
+  fill: var(--primary-green);
+}
+
+.image {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}

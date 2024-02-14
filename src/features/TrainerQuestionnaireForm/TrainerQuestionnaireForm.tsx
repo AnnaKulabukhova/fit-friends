@@ -1,38 +1,53 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Modal } from '../../shared/ui/Modal';
-import { RadioButtonWrapperFirstVariant } from '../../shared/ui/RadioButtonWrapperFirstVariant';
-import { CheckboxWrapperSecondVariant } from '../../shared/ui/CheckboxWrapperSecondVariant';
-import { typeOfTraining } from '../../entities/questionnaire/constants/typOfTraining';
-import styles from './TrainerQuestionnaireForm.module.css';
-import { timeForTraining } from '../../entities/questionnaire/constants/timeForTraining';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../../entities/questionnaire/trainer/trainerQuestionnaireSchema';
-import { CheckboxWrapper } from '../../shared/ui/CheckboxWrapper';
-import { personalTraining } from '../../entities/questionnaire/constants/personalTraining';
-import { Button } from '../../shared/ui/Button';
-import { Textarea } from '../../shared/ui/Textarea';
-import { UploadPhoto } from '../../shared/ui/UploadPhoto';
-import addedPhoto from '../../shared/images/emptyPhoto.svg';
+import { Modal } from '@shared/ui/Modal';
+import { ControlledRadioButton } from '@shared/ui/Controlled/ControlledRadioButton';
+import { typeOfTraining } from '@entities/registration/questionnaire/constants/typeOfTraining';
+import { level } from '@entities/registration/questionnaire/constants/level';
+import { schema } from '@entities/registration/questionnaire/trainer/trainerQuestionnaireSchema';
+import { GroupCheckbox } from '@shared/ui/Controlled/GroupCheckbox';
+import { personalTraining } from '@entities/registration/questionnaire/constants/personalTraining';
+import { Button } from '@shared/ui/Button';
+import { Textarea } from '@shared/ui/Controlled/Textarea';
+import { ControlledUploadFile } from '@shared/ui/Controlled/ControlledUploadFile';
+import addedPhoto from '@shared/images/emptyPhotoMini.svg';
+import { FieldsTrainerQuestionnaire } from '@entities/registration/questionnaire/trainer/fieldsTrainerQuestionnaire';
+import styles from './TrainerQuestionnaireForm.module.css';
+import { convertDataForCheckboxFields } from '@shared/utils/convertDataForCheckboxFields';
+import { Training } from '@entities/registration/models/training';
+import { Agreements } from '@entities/registration/models/agreements';
 
 export const TrainerQuestionnaireForm = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      type: [],
-      level: '',
-      certificate: '',
-      experience: '',
-      personalTraining: [],
+      [FieldsTrainerQuestionnaire.Type]: {
+        [Training.Yoga]: true,
+        [Training.Running]: false,
+        [Training.Power]: false,
+        [Training.Aerobics]: false,
+        [Training.Crossfit]: false,
+        [Training.Box]: false,
+        [Training.Pilates]: true,
+        [Training.Stretching]: false,
+      },
+      [FieldsTrainerQuestionnaire.Level]: '',
+      [FieldsTrainerQuestionnaire.Certificate]: undefined,
+      [FieldsTrainerQuestionnaire.Experience]: '',
+      [FieldsTrainerQuestionnaire.PersonalTraining]: {
+        [Agreements.PersonalTraining]: true,
+      },
     },
   });
 
-  const { handleSubmit, watch } = methods;
+  const { handleSubmit, getValues } = methods;
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    console.log('data', data);
   });
 
-  console.log('certificate', watch('certificate'));
+  const convertDataOfTraining = convertDataForCheckboxFields(typeOfTraining);
+  const convertDataOfPersonalTraining = convertDataForCheckboxFields(personalTraining);
 
   return (
     <div className={styles.modal}>
@@ -43,40 +58,47 @@ export const TrainerQuestionnaireForm = () => {
               <legend className={styles.title}>
                 Ваша специализация (тип) тренировок
               </legend>
-              <CheckboxWrapperSecondVariant name="type" list={typeOfTraining} />
+              <GroupCheckbox
+                stateOfList={FieldsTrainerQuestionnaire.Type}
+                list={convertDataOfTraining}
+                variant="complex"
+              />
             </fieldset>
 
             <fieldset className={styles.block}>
               <legend className={styles.title}>Ваш уровень</legend>
-              <RadioButtonWrapperFirstVariant
-                name="level"
-                list={timeForTraining}
+              <ControlledRadioButton
+                name={FieldsTrainerQuestionnaire.Level}
+                list={level}
+                variant="simple"
               />
             </fieldset>
 
             <div className={styles.block}>
               <span className={styles.title}>Ваши дипломы и сертификаты</span>
-              <UploadPhoto
-                text="JPG, PNG, оптимальный размер 100х100 px"
+              <ControlledUploadFile
+                variant="second"
+                text="Загрузите сюда файлы формата PDF, JPG или PNG"
                 image={addedPhoto}
-                title="Загрузите фото профиля"
-                name="certificate"
+                name={FieldsTrainerQuestionnaire.Certificate}
               />
             </div>
 
             <div className={styles.block}>
               <span className={styles.title}>
-                Расскажите о своём опыте, который мы сможем проверить{' '}
+                Расскажите о своём опыте, который мы сможем проверить
               </span>
-              <Textarea name="experience" rows={5} />
+              <Textarea name={FieldsTrainerQuestionnaire.Experience} rows={5} />
             </div>
 
             <fieldset className={styles.block}>
-              <CheckboxWrapper
-                name="personalTraining"
-                list={personalTraining}
+              <GroupCheckbox
+                stateOfList={FieldsTrainerQuestionnaire.PersonalTraining}
+                list={convertDataOfPersonalTraining}
+                variant="simple"
               />
             </fieldset>
+
             <div className={styles.button}>
               <Button variant="primary">Продолжить</Button>
             </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import title from '../../shared/images/titleBlack.svg';
-import logo from '../../shared/images/iconLogin.svg';
+import { UserQuestionnaireForm } from '@features/UserQuestionnaireForm';
+import title from '@shared/images/titleBlack.svg';
+import logo from '@shared/images/iconLogin.svg';
 import styles from './UserQuestionnaire.module.css';
-import { UserQuestionnaireForm } from '../../features/UserQuestionnaireForm';
 
 export const UserQuestionnaire = () => {
   return (

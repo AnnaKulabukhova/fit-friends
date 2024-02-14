@@ -1,8 +1,8 @@
 import React from 'react';
+import { LoginForm } from '@features/LoginForm';
+import title from '@shared/images/titleBlack.svg';
+import logo from '@shared/images/iconLogin.svg';
 import styles from './Login.module.css';
-import title from '../../shared/images/titleBlack.svg';
-import logo from '../../shared/images/iconLogin.svg';
-import { LoginForm } from '../../features/LoginForm';
 
 export const Login = () => {
   return (

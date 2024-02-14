@@ -26,6 +26,19 @@ module.exports = {
     filename: '[name].[contenthash].js',
     publicPath: '/',
   },
+  resolve: {
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+      '@shared': path.resolve(__dirname, 'src/shared'),
+      '@entities': path.resolve(__dirname, 'src/entities'),
+      '@app': path.resolve(__dirname, 'src/app'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@features': path.resolve(__dirname, 'src/features'),
+      '@widgets': path.resolve(__dirname, 'src/widgets'),
+    },
+    extensions: ['.*', '.js', '.ts', '.tsx'],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
@@ -42,11 +55,6 @@ module.exports = {
       },
       { test: /\.tsx?$/, loader: 'ts-loader' },
       { test: /\.js$/, loader: 'source-map-loader' },
-      // {
-      //   test: /.tsx?$/i,
-      //   exclude: /node_modules/,
-      //   use: 'ts-loader',
-      // },
       {
         test: /\.module\.css$/,
         use: [
@@ -69,8 +77,5 @@ module.exports = {
         type: mode === 'production' ? 'asset' : 'asset/resource',
       },
     ],
-  },
-  resolve: {
-    extensions: ['.*', '.js', '.ts', '.tsx'],
   },
 };

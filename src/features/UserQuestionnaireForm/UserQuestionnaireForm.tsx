@@ -1,37 +1,49 @@
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { schema } from '../../entities/questionnaire/user/userQuestionnaireSchema';
-import { Modal } from '../../shared/ui/Modal';
-import { Button } from '../../shared/ui/Button';
-import { level } from '../../entities/questionnaire/constants/level';
-import { timeForTraining } from '../../entities/questionnaire/constants/timeForTraining';
-import { RadioButtonWrapperFirstVariant } from '../../shared/ui/RadioButtonWrapperFirstVariant';
+import { schema } from '@entities/registration/questionnaire/user/userQuestionnaireSchema';
+import { Modal } from '@shared/ui/Modal';
+import { Button } from '@shared/ui/Button';
+import { level } from '@entities/registration/questionnaire/constants/level';
+import { timeForTraining } from '@entities/registration/questionnaire/constants/timeForTraining';
+import { ControlledRadioButton } from '@shared/ui/Controlled/ControlledRadioButton';
+import { typeOfTraining } from '@entities/registration/questionnaire/constants/typeOfTraining';
+import { GroupCheckbox } from '@shared/ui/Controlled/GroupCheckbox';
+import { ControlledInput } from '@shared/ui/Controlled/ControlledInput';
+import { FieldsUserQuestionnaire } from '@entities/registration/questionnaire/user/fieldsUserQuestionnaire';
 import styles from './UserQuestionnaireForm.module.css';
-import { typeOfTraining } from '../../entities/questionnaire/constants/typOfTraining';
-import { CheckboxWrapperSecondVariant } from '../../shared/ui/CheckboxWrapperSecondVariant';
-import { ControlledInput } from '../../shared/ui/ControlledInput';
+import { Training } from '@entities/registration/models/training';
+import { convertDataForCheckboxFields } from '@shared/utils/convertDataForCheckboxFields';
 
 export const UserQuestionnaireForm = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      type: [],
-      time: '',
-      level: '',
-      spendCaloriesDaily: 0,
-      spendCaloriesTotal: 0,
+      [FieldsUserQuestionnaire.Type]: {
+        [Training.Yoga]: true,
+        [Training.Running]: false,
+        [Training.Power]: false,
+        [Training.Aerobics]: false,
+        [Training.Crossfit]: false,
+        [Training.Box]: false,
+        [Training.Pilates]: true,
+        [Training.Stretching]: false,
+      },
+      [FieldsUserQuestionnaire.Time]: '',
+      [FieldsUserQuestionnaire.Level]: '',
+      [FieldsUserQuestionnaire.SpendCaloriesDaily]: 0,
+      [FieldsUserQuestionnaire.SpendCaloriesTotal]: 0,
     },
   });
 
-  const { handleSubmit, watch } = methods;
+  const { handleSubmit, watch, getValues } = methods;
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
 
-  console.log('type', watch('type'));
-  // console.log('userAgreement', watch('userAgreement'));
+  const convertDataOfTraining = convertDataForCheckboxFields(typeOfTraining);
+
   return (
     <div className={styles.modal}>
       <Modal>
@@ -41,16 +53,21 @@ export const UserQuestionnaireForm = () => {
               <legend className={`${styles.title} ${styles.titleButton}`}>
                 Ваша специализация (тип) тренировок
               </legend>
-              <CheckboxWrapperSecondVariant name="type" list={typeOfTraining} />
+              <GroupCheckbox
+                variant="complex"
+                stateOfList={FieldsUserQuestionnaire.Type}
+                list={convertDataOfTraining}
+              />
             </fieldset>
 
             <fieldset className={styles.block}>
               <legend className={`${styles.title} ${styles.titleButton}`}>
                 Ваш уровень
               </legend>
-              <RadioButtonWrapperFirstVariant
-                name="level"
+              <ControlledRadioButton
+                name={FieldsUserQuestionnaire.Time}
                 list={timeForTraining}
+                variant="simple"
               />
             </fieldset>
 
@@ -58,7 +75,11 @@ export const UserQuestionnaireForm = () => {
               <legend className={`${styles.title} ${styles.titleButton}`}>
                 Сколько времени вы готовы уделять на тренировку в день
               </legend>
-              <RadioButtonWrapperFirstVariant name="time" list={level} />
+              <ControlledRadioButton
+                name={FieldsUserQuestionnaire.Level}
+                list={level}
+                variant="simple"
+              />
             </fieldset>
 
             <div className={styles.inner}>
@@ -69,7 +90,7 @@ export const UserQuestionnaireForm = () => {
                 <div className={styles.input}>
                   <ControlledInput
                     type="text"
-                    name="spendCaloriesDaily"
+                    name={FieldsUserQuestionnaire.SpendCaloriesDaily}
                     text="ккал"
                   />
                 </div>
@@ -82,7 +103,7 @@ export const UserQuestionnaireForm = () => {
                 <div className={styles.input}>
                   <ControlledInput
                     type="text"
-                    name="spendCaloriesTotal"
+                    name={FieldsUserQuestionnaire.SpendCaloriesTotal}
                     text="ккал"
                   />
                 </div>
