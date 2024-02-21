@@ -1,0 +1,53 @@
+.innerPhoto {
+  display: flex;
+}
+
+.innerPhotoSecond {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gray);
+}
+
+.inputPhoto {
+  display: none;
+}
+
+.image {
+  margin-right: 20px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--black-2);
+}
+
+.photoInfo {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #aeaeae;
+}
+.photoInfoPrime {
+  font-size: 14px;
+}
+
+.photoInfoSecond {
+  font-size: 16px;
+}
+
+.errorText {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: #e4001b;
+  font-size: 14px;
+  line-height: 100%;
+}
