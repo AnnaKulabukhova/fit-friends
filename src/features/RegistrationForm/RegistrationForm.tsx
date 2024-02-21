@@ -16,43 +16,29 @@ import { ControlledInput } from '@shared/ui/Controlled/ControlledInput';
 import { GroupCheckbox } from '@shared/ui/Controlled/GroupCheckbox';
 import { FieldRegistration } from '@entities/registration/generalInformation/fieldsRegistration';
 import styles from './RegistrationForm.module.css';
-import { Agreements } from '@entities/registration/models/agreements';
 import { userAgreement } from '@entities/registration/generalInformation/constants/agreement';
 import { convertDataForCheckboxFields } from '@shared/utils/convertDataForCheckboxFields';
+import { defaultValuesRegistrationForm } from '@entities/registration/generalInformation/constants/defaultValuesRegistrationForm';
 
 export const RegistrationForm = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      [FieldRegistration.Photo]: undefined,
-      [FieldRegistration.Name]: '',
-      [FieldRegistration.Email]: '',
-      [FieldRegistration.DateOfBirth]: '',
-      [FieldRegistration.Location]: '',
-      [FieldRegistration.Password]: '',
-      [FieldRegistration.Gender]: '',
-      [FieldRegistration.Role]: '',
-      [FieldRegistration.UserAgreement]: {
-        [Agreements.UserAgreement]: true,
-      },
-    },
+    defaultValues: defaultValuesRegistrationForm,
   });
   const navigate = useNavigate();
 
-  const { handleSubmit, getValues } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit((data) => {
+    const dateOfCreation = new Date();
+    console.log('data', data);
     if (data) {
-      console.log(data);
       if (data[FieldRegistration.Role] === 'trainer') {
         navigate('/trainer-questionnaire');
       }
       if (data[FieldRegistration.Role] === 'sportsman') {
         navigate('/user-questionnaire');
       }
-
-      const dateOfCreation = new Date();
-      console.log('data', data);
     }
   });
 

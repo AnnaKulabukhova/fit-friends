@@ -1,7 +1,7 @@
 export const optionsLocation = [
-  { value: 'pioneer', label: 'Пионерская' },
+  { value: 'pioneerskaya', label: 'Пионерская' },
   { value: 'petrogradskaya', label: 'Петроградская' },
-  { value: 'specific', label: 'Удельная' },
-  { value: 'starry', label: 'Звёздная' },
-  { value: 'sports', label: 'Спортивная' },
+  { value: 'udelnaya', label: 'Удельная' },
+  { value: 'zvezdnaya', label: 'Звёздная' },
+  { value: 'sportivnaya', label: 'Спортивная' },
 ];

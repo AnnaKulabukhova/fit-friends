@@ -11,8 +11,6 @@ export const SimpleCheckbox = ({
 }: SimpleCheckboxProps) => {
   const otherStyles = style ? styles[style] : '';
 
-  console.log('otherStyles', otherStyles);
-
   return (
     <>
       <label className={styles.label}>

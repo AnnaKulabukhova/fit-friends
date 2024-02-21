@@ -12,31 +12,16 @@ import { GroupCheckbox } from '@shared/ui/Controlled/GroupCheckbox';
 import { ControlledInput } from '@shared/ui/Controlled/ControlledInput';
 import { FieldsUserQuestionnaire } from '@entities/registration/questionnaire/user/fieldsUserQuestionnaire';
 import styles from './UserQuestionnaireForm.module.css';
-import { Training } from '@entities/registration/models/training';
 import { convertDataForCheckboxFields } from '@shared/utils/convertDataForCheckboxFields';
+import { defaultValuesUserQuestionnaireForm } from '@entities/registration/questionnaire/constants/defaultValuesUserQuestionnaireForm';
 
 export const UserQuestionnaireForm = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      [FieldsUserQuestionnaire.Type]: {
-        [Training.Yoga]: true,
-        [Training.Running]: false,
-        [Training.Power]: false,
-        [Training.Aerobics]: false,
-        [Training.Crossfit]: false,
-        [Training.Box]: false,
-        [Training.Pilates]: true,
-        [Training.Stretching]: false,
-      },
-      [FieldsUserQuestionnaire.Time]: '',
-      [FieldsUserQuestionnaire.Level]: '',
-      [FieldsUserQuestionnaire.SpendCaloriesDaily]: 0,
-      [FieldsUserQuestionnaire.SpendCaloriesTotal]: 0,
-    },
+    defaultValues: defaultValuesUserQuestionnaireForm,
   });
 
-  const { handleSubmit, watch, getValues } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);

@@ -12,7 +12,7 @@ export const schema = yup.object().shape({
       return Boolean(type && imageTypes.has(type));
     })
     .test('fileSize', 'Этот файл слишком большой', (value) => {
-      return Boolean(value && value[0].size && value[0].size <= 1000000);
+      return Boolean(value && value[0] && value[0].size <= 1000000);
     }),
 
   [FieldRegistration.Name]: yup

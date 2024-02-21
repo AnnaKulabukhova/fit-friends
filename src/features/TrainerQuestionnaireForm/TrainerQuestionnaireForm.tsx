@@ -15,33 +15,15 @@ import addedPhoto from '@shared/images/emptyPhotoMini.svg';
 import { FieldsTrainerQuestionnaire } from '@entities/registration/questionnaire/trainer/fieldsTrainerQuestionnaire';
 import styles from './TrainerQuestionnaireForm.module.css';
 import { convertDataForCheckboxFields } from '@shared/utils/convertDataForCheckboxFields';
-import { Training } from '@entities/registration/models/training';
-import { Agreements } from '@entities/registration/models/agreements';
+import { defaultValuesTrainerQuestionnaireForm } from '@entities/registration/questionnaire/constants/defaultValuesTrainerQuestionnaireForm';
 
 export const TrainerQuestionnaireForm = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      [FieldsTrainerQuestionnaire.Type]: {
-        [Training.Yoga]: true,
-        [Training.Running]: false,
-        [Training.Power]: false,
-        [Training.Aerobics]: false,
-        [Training.Crossfit]: false,
-        [Training.Box]: false,
-        [Training.Pilates]: true,
-        [Training.Stretching]: false,
-      },
-      [FieldsTrainerQuestionnaire.Level]: '',
-      [FieldsTrainerQuestionnaire.Certificate]: undefined,
-      [FieldsTrainerQuestionnaire.Experience]: '',
-      [FieldsTrainerQuestionnaire.PersonalTraining]: {
-        [Agreements.PersonalTraining]: true,
-      },
-    },
+    defaultValues: defaultValuesTrainerQuestionnaireForm,
   });
 
-  const { handleSubmit, getValues } = methods;
+  const { handleSubmit } = methods;
   const onSubmit = handleSubmit((data) => {
     console.log('data', data);
   });
